@@ -8,4 +8,18 @@ sqlite3
 #check db structure
 .schema
 
+#insert data into database
+INSERT INTO stock (symbol, company) VALUES ('AAPL', 'Apple');
+INSERT INTO stock (symbol, company) VALUES ('MSFT', 'Microsoft');
+INSERT INTO stock (symbol, company) VALUES ('TSLA', 'Tesla');
+INSERT INTO stock (symbol, company) VALUES ('AMD', 'Advanced Micro Devices');
 
+#check input into db
+#should output previous 4 lines above, "*" is the wildcard to get entire team
+SELECT * FROM stock;
+
+#to update a record
+UPDATE stock SET company = 'Apple Inc.' WHERE id = 1;
+
+#to delete a record
+ELETE FROM stock WHERE id = 3;
