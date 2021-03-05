@@ -1,0 +1,18 @@
+## run script to retrieve data from yahoo finance
+pip install yfinance
+
+## search for appl stock and save to csv file
+import yfinance
+df = yfinance.download('AAPL', start='2020-01-01', end='2020-10-02')
+df.to_csv('AAPL.csv')
+
+##install sqlite in prefered application - I did in VS studio
+##via terminal (to open sqlite & check installation) 
+sqlite3
+## to quit
+.quit
+
+##to create app database
+sqlite3 app.db
+.quit
+

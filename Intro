@@ -1,8 +1,0 @@
-# run script to retieve sata from yahoo finance
-pip install yfinance
-
-## search for appl stock and save to csv file
-import yfinance
-df = yfinance.download('AAPL', start='2020-01-01', end='2020-10-02')
-df.to_csv('AAPL.csv')
-
