@@ -1,0 +1,11 @@
+## all in commmand line
+# Create, Read, Update & Delete
+sqlite3
+
+#open databse
+.open app.db
+
+#check db structure
+.schema
+
+
