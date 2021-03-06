@@ -14,6 +14,9 @@ INSERT INTO stock (symbol, company) VALUES ('MSFT', 'Microsoft');
 INSERT INTO stock (symbol, company) VALUES ('TSLA', 'Tesla');
 INSERT INTO stock (symbol, company) VALUES ('AMD', 'Advanced Micro Devices');
 
+#sample crud operations
+#https://hackingthemarkets.com/full-stack-trading-app-tutorial-part-02-intro-to-sql/
+
 #check input into db
 #should output previous 4 lines above, "*" is the wildcard to get entire team
 SELECT * FROM stock;
