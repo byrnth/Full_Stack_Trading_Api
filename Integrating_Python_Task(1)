@@ -1,0 +1,18 @@
+#import app and conect or create database
+import sqlite3
+connection = sqlite3.connect('app.db')
+
+#populate information in the database
+
+import sqlite3
+connection = sqlite3.connect('app.db')
+
+cursor = connection.cursor()
+# test import
+cursor.execute("INSERT INTO stock (symbol, company) VALUES ('ADBE', 'Adobe Inc.')")
+cursor.execute("INSERT INTO stock (symbol, company) VALUES ('VZ', 'Verizon')")
+
+#delete imported from db
+#cursor.execute("DELETE FROM stock")
+
+connection.commit()
