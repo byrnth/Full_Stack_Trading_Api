@@ -4,19 +4,32 @@ import sqlite3
 import alpaca_trade_api as tradeapi
 
 connection = sqlite3.connect('app.db')
+#return item as sqlite object
+connection.row_factory = sqlite3.Row
+
 cursor = connection.cursor()
 
-api = tradeapi.REST('YOUR_API_KEY', 'YOUR_SECRET_KEY', base_url='https://paper-api.alpaca.markets') # or use ENV Vars shown below
+cursor.execute("""
+    SELECT symbol, company FROM stock
+""")
+
+#sqlite3 object allow search by "symbol" or "company"
+rows = cursor.fetchall()
+#create list of symbols
+symbols = [row['symbol'] for row in rows]
+
+api = tradeapi.REST('PKHY8WZFS7XSG4MV31JV', 't9ZWxPnZv3fDFHxUfjwZgrLZaCLrsy5XZp0CaBLj', base_url='https://paper-api.alpaca.markets') # or use ENV Vars shown below
 assets = api.list_assets()
 
-#ony isert assest that are active and tradable 
+#only isert assest that are active and tradable 
 for asset in assets:
     try:
-        if asset.status == 'active' and asset.tradable:
-            cursor.execute("INSERT INTO stock (symbol, company) VALUES (?, ?)", (asset.symbol, asset.name))
+        if asset.status == 'active' and asset.tradable and asset.symbol not in symbols:
+                print(f"Added a new stock {asset.symbol} {asset.name}")
+                cursor.execute("INSERT INTO stock (symbol, company) VALUES (?, ?)", (asset.symbol, asset.name))
     except Exception as e:
         print(asset.symbol)
-        print(e)
+        print(e) 
 
 connection.commit()
 
